@@ -13,13 +13,14 @@ import (
 	"github.com/reaperhero/go-kit-microservice/napodate"
 )
 
+var (
+	httpAddr = flag.String("http", ":8080", "http listen address")
+)
+
 func main() {
-	var (
-		httpAddr = flag.String("http", ":8080", "http listen address")
-	)
+
 	flag.Parse()
 	ctx := context.Background()
-	// our napodate service
 	srv := napodate.NewService()
 	errChan := make(chan error)
 
