@@ -35,6 +35,11 @@ func decodeGetRequest(ctx context.Context, r *http.Request) (interface{}, error)
 	return req, nil
 }
 
+func decodeStatusRequest(ctx context.Context, r *http.Request) (interface{}, error) {
+	var req statusRequest
+	return req, nil
+}
+
 func decodeValidateRequest(ctx context.Context, r *http.Request) (interface{}, error) {
 	var req validateRequest
 	err := json.NewDecoder(r.Body).Decode(&req)
@@ -44,10 +49,6 @@ func decodeValidateRequest(ctx context.Context, r *http.Request) (interface{}, e
 	return req, nil
 }
 
-func decodeStatusRequest(ctx context.Context, r *http.Request) (interface{}, error) {
-	var req statusRequest
-	return req, nil
-}
 
 func encodeResponse(ctx context.Context, w http.ResponseWriter, response interface{}) error {
 	return json.NewEncoder(w).Encode(response)
